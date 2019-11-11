@@ -67,7 +67,7 @@ import React, { Component } from 'react';
 					</div>
 				</footer>
 				<div className="bottom-area">
-					<p>© 2019 Blockbuster. All Rights Reserved. Designed by leehari.</p>
+					<p>© 2020 nessmovies. All Rights Reserved. Designed by <a href="https://www.fb.com/547h1">Jobayer Hossain</a>.</p>
 				</div>
 			</React.Fragment>
 		)

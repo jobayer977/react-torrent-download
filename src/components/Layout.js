@@ -10,6 +10,11 @@ import axios from 'axios'
  			upComingMovie:[],
  			topRatedMovie:[],
  			popularCelebrity:[],
+ 			searchQuery:'',
+ 			searchInfo:[],
+ 			searching:false,
+ 			searchPaginatio:2,
+ 			searchPageItemShow:0,
  			loading:true,
  		}
  	}
@@ -35,9 +40,56 @@ import axios from 'axios'
  				topRatedMovie:response.data.data.movies
  			}))
  	}
+ 	onChangeHandler = (e) => {
+ 		this.setState({
+ 			searchQuery:e.target.value
+ 		})
+ 		 e.preventDefault();
+ 	}
+ 	searchSubmit = (e) => {
+ 		axios.get(`https://yts.lt/api/v2/list_movies.json?query_term=${this.state.searchQuery}&limit=12`)
+ 			.then(response => this.setState({
+ 				latestMovies:response.data.data.movies,
+ 				searchInfo:response.data.data,
+ 				searchPageItemShow:response.data.data.movie_count,
+ 				searching:true
+ 			}))
+ 		e.preventDefault();
+ 	}
+ 	nextSearchPage = (e) => {
+ 		axios.get(`https://yts.lt/api/v2/list_movies.json?query_term=${this.state.searchQuery}&limit=12&page=${this.state.searchPaginatio}`)
+ 			.then(response => this.setState({
+ 				latestMovies:response.data.data.movies,
+ 				searchInfo:response.data.data,
+ 				searching:true,
+ 				searchPaginatio:this.state.searchPaginatio +1,
+ 				searchPageItemShow:this.state.searchPageItemShow - 12
+ 			}))
+ 		window.scrollTo({
+            top: 150,
+            behavior: 'smooth'
+        })
+ 		e.preventDefault();
+ 	}
+ 	
+
+
 	render() {
-		const{latestMovies,populardownload,upComingMovie,topRatedMovie,popularCelebrity} = this.state
+		const{latestMovies,populardownload,upComingMovie,topRatedMovie,popularCelebrity,searchQuery,searching,searchInfo,searchPageItemShow} = this.state
 		console.log(latestMovies)
+		var headingStatus = ''
+		var searchPageStatus = ''
+		if (searching === false) {
+			headingStatus = 'Latest movies'
+			searchPageStatus = ''
+		} else {
+			headingStatus = <div className="searchInfo">You Searching {searchQuery}  found {searchPageItemShow && searchPageItemShow} Movie</div>
+			if (searchPageItemShow > 12) {
+				searchPageStatus = <button className="loadbtn" onClick={this.nextSearchPage}>More {searchPageItemShow}</button>
+			} else {
+				searchPageStatus = <a href="/"><button className="loadbtn">Back to Home</button></a>
+			}
+		}
 		return (
 			<React.Fragment>
 				
@@ -46,8 +98,8 @@ import axios from 'axios'
 							<div className="row">
 								<div className="col-md-12">
 									<div className="search-box">
-										<form action="">
-											<input type="text" placeholder="Search..."/>
+										<form onSubmit={this.searchSubmit}>
+											<input type="text" placeholder="Search..."  onChange={this.onChangeHandler}/>
 											<input type="submit" value="Search"/>
 										</form>
 									</div>
@@ -61,7 +113,7 @@ import axios from 'axios'
 							<div className="social-link-wrapper">
 								<div className="row">
 									<div className="col-md-6">
-										<h1 className="title">Latest movies</h1>
+										<h1 className="title">{headingStatus}</h1>
 									</div>
 									<div className="col-md-6 text-right">
 										<h4>Follow US:</h4>
@@ -75,15 +127,15 @@ import axios from 'axios'
 							</div>
 							<div className="row">
 								{
-									latestMovies.map((movie,i) => (
+									latestMovies && latestMovies.map((movie,i) => (
 										<div className="col-lg-3 col-md-6 col-sm-12 col-12" key={i}>
 											<div className="latest-item">
 												<div className="thumnail">
 													<img src={movie.large_cover_image} alt=""/>
 												</div>
 												<div className="sort-info">
-													{movie.genres.map((gen,i)=> (<div className="genres" key={i}><span  className={gen}>{gen}</span></div>))}
-													<h2>{movie.title_english}</h2>
+													{movie.genres.slice(0,3).map((gen,i)=> (<div className="genres" key={i}><span  className={gen}>{gen}</span></div>))}
+													<h2>{movie.title_english} <span>{movie.year}</span></h2>
 													<h4><i className="fas fa-star"></i> {movie.rating} <span>/10</span></h4>
 												</div>
 												<a href={`/movie/${movie.slug}?id=${movie.id}`}>View details</a>
@@ -91,6 +143,12 @@ import axios from 'axios'
 										</div>
 										))
 								}
+
+							</div>
+							<div className="row ">
+									<div className="col-md-12 text-center">
+										{searchPageStatus}
+									</div>
 							</div>
 						</div>
 					</section>
@@ -109,7 +167,7 @@ import axios from 'axios'
 																<img src={movie.large_cover_image} alt=""/>
 																<div className="t-movie-info">
 																	{movie.genres.slice(0,2).map((gen,i)=> (<div className="genres" key={i}><span  className={gen}>{gen}</span></div>))}
-																	<h2>{movie.title}</h2>
+																	<h2>{movie.title} <span>{movie.year}</span></h2>
 																	<h4><i className="fas fa-star"></i> {movie.rating} <span>/10</span></h4>
 																</div>
 																<a href={`/movie/${movie.slug}?id=${movie.id}`}>View details</a>
@@ -148,7 +206,7 @@ import axios from 'axios'
 																<img src={movie.large_cover_image} alt=""/>
 																<div className="t-movie-info">
 																	{movie.genres.slice(0,2).map((gen,i)=> (<div className="genres" key={i}><span  className={gen}>{gen}</span></div>))}
-																	<h2>{movie.title}</h2>
+																	<h2>{movie.title}  <span>{movie.year}</span></h2>
 																	<h4><i className="fas fa-star"></i>{movie.rating} <span> /10</span></h4>
 																</div>
 																<a href={`/movie/${movie.slug}?id=${movie.id}`}>read more</a>

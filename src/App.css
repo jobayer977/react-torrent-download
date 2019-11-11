@@ -136,6 +136,7 @@ nav a:hover {
 .latest-item {
     position: relative;
     height: 400px;
+    margin-bottom: 30px;
 }
 
 .latest-movie-wrapper img {
@@ -816,6 +817,7 @@ span.Adventure {
     display: inline-block;
     margin: 0;
     font-size: 12px;
+    text-align: justify;
 }
 
 .ov-right-side h4 {
@@ -847,4 +849,37 @@ span.Adventure {
 
 .movie-download a:hover {
     background: #bd0037;
+}
+
+span.Sci-Fi {
+    background: #009688;
+}
+
+.bottom-area a {
+    color: #00BCD4;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+.searchInfo {
+    text-transform: capitalize;
+    font-weight: 700;
+}
+
+
+button.loadbtn {
+    border: none;
+    background: #dd003f;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 8px 20px;
+    transition: 0.3s all;
+    outline: none;
+}
+
+button.loadbtn:hover {
+    background: #c0093d;
 }
