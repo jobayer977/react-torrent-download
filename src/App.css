@@ -23,7 +23,9 @@ h6 {
 a {
     text-decoration: none !important;
 }
-
+p {
+    letter-spacing: 1px !important;
+}
 input:focus {
     outline: none;
 }
@@ -36,6 +38,25 @@ body {
     font-weight: 400;
     background: url('./assest/ft-bg.jpg');
     background-size: contain;
+}
+
+body:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    opacity: 0.1;
+    z-index: -1;
+}
+.title {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+
 }
 
 /*****---------- End Common ----------*****/
@@ -109,6 +130,10 @@ nav a:hover {
 
 /*****---------- End Search ----------*****/
 /*****---------- Start LatestMovies ----------*****/
+.latest-movie-wrapper {
+    padding: 55px 0px;
+}
+
 .social-link-wrapper h4 {
     color: #fff;
     font-size: 14px;
@@ -210,6 +235,17 @@ nav a:hover {
     background-color: #111e2e;
     margin-bottom: 30px;
     overflow: hidden;
+    border-radius: 5px;
+}
+.tranding-list-item:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    opacity: 0.2;
 }
 
 
@@ -234,6 +270,7 @@ nav a:hover {
     object-fit: cover;
     height: 100%;
     width: 100%;
+    box-shadow: inset -5px -50px 100px -15px #000000;
 }
 
 
@@ -308,6 +345,22 @@ nav a:hover {
 }
 
 /*****---------- End Popular Downloads ----------*****/
+/*****---------- Start upcoming  ----------*****/
+
+.upcoming li {
+    height: 98px;
+    margin-bottom: 10px !important;
+}
+
+.upcoming li img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+
+/*****---------- End upcoming  ----------*****/
 /*****---------- Celebrities ----------*****/
 
 
@@ -882,4 +935,35 @@ button.loadbtn {
 
 button.loadbtn:hover {
     background: #c0093d;
+}
+
+
+.view-more {
+    font-size: 14px;
+    color: #abb7c4;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: 10px;
+    transition: 0.4s all;
+    margin: 25px 0px;
+}
+
+.view-more:hover {
+    color: #fff;
+}
+
+.movie-list-wrapper {
+    background-color: #020d18;
+    padding: 75px 0;
+}
+
+.page-title {
+    font-family: 'Dosis', sans-serif;
+    font-size: 28px;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 14px 0px;
 }

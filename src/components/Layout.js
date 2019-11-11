@@ -158,7 +158,14 @@ import axios from 'axios'
 								<div className="row">
 									<div className="col-md-9">
 										<div className="tranding-movies">
-											<h1 className="title">popular   download</h1>
+											<div className="row">
+												<div className="col-md-6">
+													<h1 className="title">popular   download</h1>
+												</div>
+												<div className="col-md-6">
+													<a href="/popular"><h2 className="view-more text-right">View All </h2></a>
+												</div>
+											</div>
 											<div className="row">
 												{
 													populardownload.map((movie,i) => (
@@ -197,7 +204,15 @@ import axios from 'axios'
 								<div className="row">
 									<div className="col-md-9">
 										<div className="tv-movies">
-											<h1 className="title">Top rated</h1>
+											
+											<div className="row">
+												<div className="col-md-6">
+													<h1 className="title">Top rated</h1>
+												</div>
+												<div className="col-md-6">
+													<a href="/top"><h2 className="view-more text-right">View All </h2></a>
+												</div>
+											</div>
 											<div className="row">		
 												{
 													topRatedMovie.map((movie,i) => (
