@@ -6,7 +6,6 @@ import axios from 'axios'
  		super(props)
  		this.state ={
  			movie:[],
- 			movieInfo:[],
  			loading:true
  		}
  	}
@@ -16,15 +15,23 @@ import axios from 'axios'
  		let GetID = params.get('id');
  		axios.get(`https://yts.lt/api/v2/movie_details.json?movie_id=${GetID}&with_images=true&with_cast=true`)
  			.then(response => this.setState({
- 				movie:response.data.data.movie
+ 				movie:response.data.data.movie,
+ 				loading:false
  			}))
 
  	}
 	render() {
-		const{movie} = this.state
+		const{movie,loading} = this.state
 		console.log(movie)
+		var loadingStatus = ''
+		if (loading === true) {
+			loadingStatus = <div className="loading"><h1><i className="fa fa-spinner fa-pulse"></i></h1></div>
+		} else {
+			loadingStatus = ''
+		}
 		return (
 			<React.Fragment>
+			{loadingStatus}
 				<div className="movie">
 					<div className="container">
 						<div className="row">
@@ -41,7 +48,7 @@ import axios from 'axios'
 									<div className="title-rating">
 										<h1>{movie.title} <span>{movie.year}</span></h1>
 
-										<p><i className="fas fa-share-alt"></i> share</p>
+										<p><i className="fa fa-share-alt"></i> share</p>
 										<p><i className="fa fa-heart-o"></i> Favorite</p>
 										<div className="rateing">
 											
@@ -96,8 +103,8 @@ import axios from 'axios'
 														</li>
 														
 														<li>
-															<h4>Run Time:</h4>
-															<p>{movie.runtime}</p>
+															<h4>Size:</h4>
+															<p>{movie.torrents && movie.torrents[1].size}</p>
 														</li>
 													</ul>
 												</div>

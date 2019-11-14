@@ -1,0 +1,53 @@
+
+
+
+/* Owl Carousel Nav Style */
+.slide-content {
+  position: relative;
+}
+.slide-content .owl-theme .owl-nav {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+}
+.slide-content .owl-theme .owl-prev, .slide-content .owl-theme .owl-next {
+  position: absolute;
+  height: 60px;
+  border: 1px solid #111;
+  z-index: 100;
+  background: rgba(0,0,0,.5)!important;
+  width: 60px;
+  border-radius: 0;
+  transition: all .2s ease;
+  outline: none;
+}
+
+.slide-content .owl-theme .owl-prev:hover, .slide-content .owl-theme .owl-next:hover {
+  background: #000!important;
+}
+.slide-content .owl-theme .owl-prev i, .slide-content .owl-theme .owl-next i {
+  font-size: 2.5rem;
+  color: #cecece;
+}
+.slide-content .owl-theme .owl-prev {
+  left: 0;
+}
+.slide-content .owl-theme .owl-next {
+  right: 0;
+}
+
+
+/* Owl Pagination Style */
+.owl-theme .owl-dots .owl-dot {
+  outline: none;
+}
+.owl-theme .owl-dots .owl-dot span {
+  background: #fff;
+  border: 2px solid red;
+  transition: all .2s ease;
+}
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span{
+  background: red;
+  outline: none;
+}

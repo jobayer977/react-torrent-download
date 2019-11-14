@@ -15,29 +15,34 @@ import axios from 'axios'
  			searching:false,
  			searchPaginatio:2,
  			searchPageItemShow:0,
- 			loading:true,
+ 			loading:true
  		}
  	}
  	componentDidMount() {
  		axios.get('https://yts.lt/api/v2/list_movies.json?&limit=4&sort_by=year')
  			.then(response => this.setState({
- 				latestMovies:response.data.data.movies
+ 				latestMovies:response.data.data.movies,
+ 				loading:false
  			}))
  		axios.get('https://yts.lt/api/v2/list_movies.json?sort_by=download_count&limit=8')
  			.then(response => this.setState({
- 				populardownload:response.data.data.movies
+ 				populardownload:response.data.data.movies,
+ 				loading:false
  			}))
  		axios.get('https://api.themoviedb.org/3/movie/upcoming?api_key=25d2bef9b77c25cd95e1a4d011f98dd9&language=en-US&page=1')
  			.then(response => this.setState({
- 				upComingMovie:response.data.results
+ 				upComingMovie:response.data.results,
+ 				loading:false
  			}))
  		axios.get('https://api.themoviedb.org/3/person/popular?api_key=25d2bef9b77c25cd95e1a4d011f98dd9&language=en-US&page=1')
  			.then(response => this.setState({
- 				popularCelebrity:response.data.results
+ 				popularCelebrity:response.data.results,
+ 				loading:false
  			}))
  		axios.get('https://yts.lt/api/v2/list_movies.json?sort_by=rating&limit=8')
  			.then(response => this.setState({
- 				topRatedMovie:response.data.data.movies
+ 				topRatedMovie:response.data.data.movies,
+ 				loading:false
  			}))
  	}
  	onChangeHandler = (e) => {
@@ -52,7 +57,7 @@ import axios from 'axios'
  				latestMovies:response.data.data.movies,
  				searchInfo:response.data.data,
  				searchPageItemShow:response.data.data.movie_count,
- 				searching:true
+ 				searching:true,
  			}))
  		e.preventDefault();
  	}
@@ -75,8 +80,8 @@ import axios from 'axios'
 
 
 	render() {
-		const{latestMovies,populardownload,upComingMovie,topRatedMovie,popularCelebrity,searchQuery,searching,searchInfo,searchPageItemShow} = this.state
-		console.log(latestMovies)
+		const{latestMovies,populardownload,upComingMovie,topRatedMovie,popularCelebrity,searchQuery,searching,searchInfo,searchPageItemShow,loading} = this.state
+		
 		var headingStatus = ''
 		var searchPageStatus = ''
 		if (searching === false) {
@@ -90,9 +95,15 @@ import axios from 'axios'
 				searchPageStatus = <a href="/"><button className="loadbtn">Back to Home</button></a>
 			}
 		}
+		var loadingStatus = ''
+		if (loading === true) {
+			loadingStatus = <div className="loading"><h1><i className="fa fa-spinner fa-pulse"></i></h1></div>
+		} else {
+			loadingStatus = ''
+		}
 		return (
 			<React.Fragment>
-				
+				{loadingStatus}
 					<section className="search-wrapper">
 						<div className="container">
 							<div className="row">
@@ -118,9 +129,9 @@ import axios from 'axios'
 									<div className="col-md-6 text-right">
 										<h4>Follow US:</h4>
 										<ul>
-											<li><a href="/"><i className="fab fa-facebook"></i></a></li>
-											<li><a href="/"><i className="fab fa-twitter"></i></a></li>
-											<li><a href="/"><i className="fab fa-instagram"></i></a></li>
+											<li><a href="/"><i className="fa fa-facebook"></i></a></li>
+											<li><a href="/"><i className="fa fa-twitter"></i></a></li>
+											<li><a href="/"><i className="fa fa-instagram"></i></a></li>
 										</ul>
 									</div>
 								</div>

@@ -14,7 +14,7 @@ import React, { Component } from 'react';
 										<h1>nessmovies</h1>
 									</div>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-									<h4>Call US <span> (+01) 202 342 6789</span></h4>
+									<h4>Call US <span> +90294029402</span></h4>
 								</div>
 							</div>
 							<div className="col-md-9">

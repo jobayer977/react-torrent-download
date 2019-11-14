@@ -40,17 +40,7 @@ body {
     background-size: contain;
 }
 
-body:after {
-    position: absolute;
-    content: '';
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background: #000;
-    opacity: 0.1;
-    z-index: -1;
-}
+
 .title {
     color: #fff;
     font-size: 18px;
@@ -233,7 +223,7 @@ nav a:hover {
     transition: 0.4s all;
     position: relative;
     background-color: #111e2e;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     overflow: hidden;
     border-radius: 5px;
 }
@@ -288,6 +278,7 @@ nav a:hover {
     background: #dd003f;
     padding: 5px 13px;
     border: none;
+    transition: 0.4s all;
 }
 .tranding-list-item:hover.tranding-list-item a {
     opacity: 1;
@@ -554,7 +545,7 @@ p {
 }
 
 .movie-info {
-    /* padding: 5px; */
+    margin-top: 10px;
 }
 
 .title-rating h1 {
@@ -636,6 +627,7 @@ p {
 
 .ov-left-side h2 {
     border-bottom: 1px solid #233a50;
+    margin-top: 30px;
 }
 
 .ov-left-side li {
@@ -724,7 +716,7 @@ header {
 }
 
 .genres span {
-    color: #fff;
+    color: #fff !IMPORTANT;
     display: inline-block;
     font-size: 12px;
     font-weight: 800;
@@ -954,7 +946,7 @@ button.loadbtn:hover {
 
 .movie-list-wrapper {
     background-color: #020d18;
-    padding: 75px 0;
+    padding-bottom: 75px;
 }
 
 .page-title {
@@ -966,4 +958,181 @@ button.loadbtn:hover {
     margin-bottom: 20px;
     text-align: center;
     padding: 14px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+.movie-info h3 {
+    letter-spacing: 1px;
+    font-size: 11px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 18px;
+}
+
+.movie-info h4 {
+    letter-spacing: 1px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    line-height: 24px;
+}
+
+.movie-info span {
+    font-size: 10px;
+    font-weight: 600;
+    color: #485566;
+    letter-spacing: 2px;
+    display: block;
+}
+
+.moive-item-wrapper {
+    margin-bottom: 15px;
+}
+
+.body-content .tranding-list-item {
+    margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    height: 100%;
+    width: 100%;
+    z-index: 99999;
+}
+
+.loading h1 {
+    color: #c21212;
+    font-size: 80px;
+    text-align: center;
+    padding-top: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* sss */
+
+
+
+footer input[type="text"]::placeholder {
+    color:  #abb7c4;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.filter-wrapper input[type="text"], .filter-wrapper select,.filter-wrapper input[type="submit"] {
+    background: #051a2f;
+    padding: 4px 10px;
+    width: 50%;
+    border: none;
+    /* margin-bottom: 20px; */
+    font-size: 14px;
+    color: #abb7c4;
+    font-weight: 300;
+    /* border-radius: 2px; */
+}
+
+
+.filter-wrapper select {
+    width: 55%;
+}
+.filter-wrapper label {
+    color: #abb7c4;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-right: 20px;
+    margin-bottom: 0;
+}
+
+.filter-wrapper input[type="text"], .filter-wrapper input[type="submit"]{
+    width: 70%;
+}
+
+.filter-wrapper {
+    background: #020d18;
+    padding-top: 75px;
+    padding-bottom: 20px;
+}
+
+.filter-wrapper {
+    background: #020d18;
+    padding-top: 75px;
+    padding-bottom: 20px;
+}
+
+.filter-wrapper form {
+    border-top: 1px solid #233a50;
+    border-bottom: 1px solid #233a50;
+    padding: 10px 0px;
+}
+select:focus {
+    outline: none;
+}
+
+.filter-wrapper input[type="submit"] {
+    background: #dd003f;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.filter-wrapper input[type="submit"]:hover{
+    background: #FF9800;
+
+}
+
+.filter-movies-status{
+    transition: 0.4s all;
+    animation-name: 'fadeIn'
+}
+
+.filter-movies-status p {
+    font-size: 14px;
+    color: #abb7c4;
+    font-weight: 500;
+    text-transform: capitalize;
+    /* letter-spacing: 3px; */
+}
+
+.filter-movies-status span {
+    color: #03A9F4;
+    letter-spacing: 2px;
+}
+.popular .row ,.top .row{
+    margin: 0;
 }

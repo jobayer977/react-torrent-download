@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import Movie from './components/Movie'
 import Popular from './components/Popular'
 import Top from './components/Top'
+import Movies from './components/Movies'
  class App extends Component {
   render() {
     return (
@@ -15,6 +16,7 @@ import Top from './components/Top'
               <Header/>
                 <Route path="/" exact component={Layout}/>
                 <Route path="/movie"  component={Movie}/>
+                <Route path="/movies"  component={Movies}/>
                 <Route path="/popular"  component={Popular}/>
                 <Route path="/top"  component={Top}/>
               <Footer/>
