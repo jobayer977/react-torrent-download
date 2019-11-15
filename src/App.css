@@ -23,16 +23,20 @@ h6 {
 a {
     text-decoration: none !important;
 }
+
 p {
     letter-spacing: 1px !important;
 }
+
 input:focus {
     outline: none;
 }
+
 img {
     max-width: 100%;
     height: auto;
 }
+
 body {
     font-family: 'Dosis', sans-serif;
     font-weight: 400;
@@ -58,6 +62,7 @@ body {
     text-transform: capitalize;
     margin-top: 5px;
 }
+
 nav {
     text-align: right;
     padding: 20px 0px;
@@ -83,6 +88,7 @@ nav a {
 nav a:hover {
     color: #dd003f;
 }
+
 /*****---------- End Header ----------*****/
 /*****---------- Start Search ----------*****/
 
@@ -200,6 +206,7 @@ nav a:hover {
     font-weight: 700;
     text-align: left;
 }
+
 /*****---------- End LatestMovies ----------*****/
 /*****---------- Start Popular Downloads ----------*****/
 
@@ -227,6 +234,7 @@ nav a:hover {
     overflow: hidden;
     border-radius: 5px;
 }
+
 .tranding-list-item:before {
     position: absolute;
     content: '';
@@ -280,9 +288,11 @@ nav a:hover {
     border: none;
     transition: 0.4s all;
 }
+
 .tranding-list-item:hover.tranding-list-item a {
     opacity: 1;
 }
+
 .t-movie-info {
     position: absolute;
     bottom: 0;
@@ -693,7 +703,7 @@ footer:after {
     z-index: -1;
 }
 
-i.fas.fa-star {
+i.fa.fa-star {
     color: #FFC107;
     font-size: 16px;
     /* margin: 0px 5px; */
@@ -865,8 +875,7 @@ span.Adventure {
     text-align: justify;
 }
 
-.ov-right-side h4 {
-}
+.ov-right-side h4 {}
 
 .ov-right-side li {
     margin-bottom: 30px;
@@ -1035,7 +1044,7 @@ button.loadbtn:hover {
 
 
 footer input[type="text"]::placeholder {
-    color:  #abb7c4;
+    color: #abb7c4;
     font-size: 12px;
     letter-spacing: 2px;
 }
@@ -1053,7 +1062,9 @@ footer input[type="text"]::placeholder {
 
 
 
-.filter-wrapper input[type="text"], .filter-wrapper select,.filter-wrapper input[type="submit"] {
+.filter-wrapper input[type="text"],
+.filter-wrapper select,
+.filter-wrapper input[type="submit"] {
     background: #051a2f;
     padding: 4px 10px;
     width: 50%;
@@ -1069,6 +1080,7 @@ footer input[type="text"]::placeholder {
 .filter-wrapper select {
     width: 55%;
 }
+
 .filter-wrapper label {
     color: #abb7c4;
     font-size: 12px;
@@ -1078,7 +1090,8 @@ footer input[type="text"]::placeholder {
     margin-bottom: 0;
 }
 
-.filter-wrapper input[type="text"], .filter-wrapper input[type="submit"]{
+.filter-wrapper input[type="text"],
+.filter-wrapper input[type="submit"] {
     width: 70%;
 }
 
@@ -1099,6 +1112,7 @@ footer input[type="text"]::placeholder {
     border-bottom: 1px solid #233a50;
     padding: 10px 0px;
 }
+
 select:focus {
     outline: none;
 }
@@ -1111,12 +1125,12 @@ select:focus {
     letter-spacing: 2px;
 }
 
-.filter-wrapper input[type="submit"]:hover{
+.filter-wrapper input[type="submit"]:hover {
     background: #FF9800;
 
 }
 
-.filter-movies-status{
+.filter-movies-status {
     transition: 0.4s all;
     animation-name: 'fadeIn'
 }
@@ -1133,6 +1147,108 @@ select:focus {
     color: #03A9F4;
     letter-spacing: 2px;
 }
-.popular .row ,.top .row{
+
+.popular .row,
+.top .row {
     margin: 0;
+}
+
+.movie span {
+    display: inline-block;
+}
+
+
+
+
+
+
+
+
+.trailer {
+    text-align: center;
+}
+
+.trailer iframe {
+    width: 100%;
+    height: auto;
+    min-height: 500px;
+}
+
+.trailer h2 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    /* border-bottom: 1px solid #233a50; */
+    padding: 5px 0px;
+    text-align: left;
+    border-bottom: 1px solid #233a50;
+    margin-top: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .title {
+        font-size: 14px !IMPORTANT;
+    }
+
+    .search-box input[type="text"] {
+        width: 50%;
+    }
+
+    .social-link-wrapper ul {
+        padding: 0px;
+    }
+
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+    header {
+        text-align: center !important;
+    }
+
+    nav {
+        text-align: center;
+    }
+
+    .footer-item {
+        margin-bottom: 30px;
+    }
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    .footer-site-title {
+        margin-bottom: 30px;
+        border-bottom: 1px solid #233a50;
+        padding: 0;
+    }
+
+    .footer-site-title {
+        margin-bottom: 30px;
+    }
+
+    .tranding-list-item a {
+        top: 15%;
+        left: 15%;
+        padding: 5px;
+    }
 }

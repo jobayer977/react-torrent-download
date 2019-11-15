@@ -70,7 +70,7 @@ import axios from 'axios'
 														<img src={movie.large_cover_image} alt=""/>
 														<div className="t-movie-info">
 															{movie.genres.slice(0,2).map((gen,i)=> (<div className="genres" key={i}><span  className={gen}>{gen}</span></div>))}
-															<h4><i className="fas fa-star"></i>{movie.rating} <span> /10</span></h4>
+															<h4><i className="fa fa-star"></i>{movie.rating} <span> /10</span></h4>
 														</div>
 														<a href={`/movie/${movie.slug}?id=${movie.id}`}>read more</a>
 														

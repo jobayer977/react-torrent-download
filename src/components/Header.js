@@ -7,12 +7,12 @@ import React, { Component } from 'react';
 				<header>
 					<div className="container">
 						<div className="row">
-							<div className="col-md-6 col-6">
+							<div className="col-md-6 col-12">
 								<div className="home-logo">
 									<a href="/"><h1>nessmovies</h1></a>
 								</div>
 							</div>
-							<div className="col-md-6 col-6">
+							<div className="col-md-6 col-12">
 								<nav>
 									<ul>
 										<li><a href="/">Home</a></li>

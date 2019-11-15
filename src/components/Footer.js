@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 				<footer>
 					<div className="container">
 						<div className="row">
-							<div className="col-md-3">
+							<div className="col-lg-3 col-md-12">
 								<div className="footer-site-title">
 									<img src="" alt=""/>
 									<div className="home-logo">
@@ -17,9 +17,9 @@ import React, { Component } from 'react';
 									<h4>Call US <span> +90294029402</span></h4>
 								</div>
 							</div>
-							<div className="col-md-9">
+							<div className="col-lg-9 col-md-12">
 								<div className="row">
-									<div className="col-md-3">
+									<div className="col-lg-3 col-md-6">
 										<div className="footer-item">
 											<h2>Resources</h2>
 											<ul>
@@ -32,7 +32,7 @@ import React, { Component } from 'react';
 											</ul>
 										</div>
 									</div>
-									<div className="col-md-3">
+									<div className="col-lg-3 col-md-6">
 										<div className="footer-item">
 											<h2>Legal</h2>
 											<ul>
@@ -42,7 +42,7 @@ import React, { Component } from 'react';
 											</ul>
 										</div>
 									</div>
-									<div className="col-md-3">
+									<div className="col-lg-3 col-md-6">
 										<div className="footer-item">
 											<h2>Account</h2>
 											<ul>
@@ -53,7 +53,7 @@ import React, { Component } from 'react';
 											</ul>
 										</div>
 									</div>
-									<div className="col-md-3">
+									<div className="col-lg-3 col-md-6">
 										<div className="footer-item">
 											<h2>Newsletter</h2>
 											<p>Subscribe to our newsletter system now to get latest news from us.</p>

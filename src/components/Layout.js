@@ -80,7 +80,7 @@ import axios from 'axios'
 
 
 	render() {
-		const{latestMovies,populardownload,upComingMovie,topRatedMovie,popularCelebrity,searchQuery,searching,searchInfo,searchPageItemShow,loading} = this.state
+		const{latestMovies,populardownload,upComingMovie,topRatedMovie,popularCelebrity,searchQuery,searching,searchPageItemShow,loading} = this.state
 		
 		var headingStatus = ''
 		var searchPageStatus = ''
@@ -123,10 +123,10 @@ import axios from 'axios'
 						<div className="container">
 							<div className="social-link-wrapper">
 								<div className="row">
-									<div className="col-md-6">
+									<div className="col-md-6 col-sm-6 col-5">
 										<h1 className="title">{headingStatus}</h1>
 									</div>
-									<div className="col-md-6 text-right">
+									<div className="col-md-6 col-sm-6 col-7 text-right">
 										<h4>Follow US:</h4>
 										<ul>
 											<li><a href="/"><i className="fa fa-facebook"></i></a></li>
@@ -139,7 +139,7 @@ import axios from 'axios'
 							<div className="row">
 								{
 									latestMovies && latestMovies.map((movie,i) => (
-										<div className="col-lg-3 col-md-6 col-sm-12 col-12" key={i}>
+										<div className="col-lg-3 col-md-6 col-sm-6 col-12" key={i}>
 											<div className="latest-item">
 												<div className="thumnail">
 													<img src={movie.large_cover_image} alt=""/>
@@ -147,7 +147,7 @@ import axios from 'axios'
 												<div className="sort-info">
 													{movie.genres.slice(0,3).map((gen,i)=> (<div className="genres" key={i}><span  className={gen}>{gen}</span></div>))}
 													<h2>{movie.title_english} <span>{movie.year}</span></h2>
-													<h4><i className="fas fa-star"></i> {movie.rating} <span>/10</span></h4>
+													<h4><i className="fa fa-star"></i> {movie.rating} <span>/10</span></h4>
 												</div>
 												<a href={`/movie/${movie.slug}?id=${movie.id}`}>View details</a>
 											</div>
@@ -167,26 +167,26 @@ import axios from 'axios'
 						<div className="container">
 							
 								<div className="row">
-									<div className="col-md-9">
+									<div className="col-lg-9 col-md-8">
 										<div className="tranding-movies">
 											<div className="row">
-												<div className="col-md-6">
+												<div className="col-md-6 col-sm-6 col-7">
 													<h1 className="title">popular   download</h1>
 												</div>
-												<div className="col-md-6">
+												<div className="col-md-6 col-sm-6 col-5">
 													<a href="/popular"><h2 className="view-more text-right">View All </h2></a>
 												</div>
 											</div>
 											<div className="row">
 												{
 													populardownload.map((movie,i) => (
-														<div className="col-md-3" key={i}>
+														<div className="col-lg-3 col-md-4 col-sm-6 col-12" key={i}>
 															<div className="tranding-list-item">
 																<img src={movie.large_cover_image} alt=""/>
 																<div className="t-movie-info">
 																	{movie.genres.slice(0,2).map((gen,i)=> (<div className="genres" key={i}><span  className={gen}>{gen}</span></div>))}
 																	<h2>{movie.title} <span>{movie.year}</span></h2>
-																	<h4><i className="fas fa-star"></i> {movie.rating} <span>/10</span></h4>
+																	<h4><i className="fa fa-star"></i> {movie.rating} <span>/10</span></h4>
 																</div>
 																<a href={`/movie/${movie.slug}?id=${movie.id}`}>View details</a>
 															</div>
@@ -196,7 +196,7 @@ import axios from 'axios'
 											</div>
 										</div>
 									</div>
-									<div className="col-md-3">
+									<div className="col-lg-3 col-md-4">
 										<div className="upcoming tranding-celebrities ">
 											<h1 className="title">upcoming</h1>
 											<ul>
@@ -213,27 +213,27 @@ import axios from 'axios'
 									</div>
 								</div>
 								<div className="row">
-									<div className="col-md-9">
+									<div className="col-lg-9 col-md-12">
 										<div className="tv-movies">
 											
 											<div className="row">
-												<div className="col-md-6">
+												<div className="col-md-6 col-sm-7 col-7">
 													<h1 className="title">Top rated</h1>
 												</div>
-												<div className="col-md-6">
+												<div className="col-md-6 col-sm-5 col-5">
 													<a href="/top"><h2 className="view-more text-right">View All </h2></a>
 												</div>
 											</div>
 											<div className="row">		
 												{
 													topRatedMovie.map((movie,i) => (
-														<div className="col-md-3" key={i}>
+														<div className="col-md-3 col-sm-6 col-12" key={i}>
 															<div className="tranding-list-item">
 																<img src={movie.large_cover_image} alt=""/>
 																<div className="t-movie-info">
 																	{movie.genres.slice(0,2).map((gen,i)=> (<div className="genres" key={i}><span  className={gen}>{gen}</span></div>))}
 																	<h2>{movie.title}  <span>{movie.year}</span></h2>
-																	<h4><i className="fas fa-star"></i>{movie.rating} <span> /10</span></h4>
+																	<h4><i className="fa fa-star"></i>{movie.rating} <span> /10</span></h4>
 																</div>
 																<a href={`/movie/${movie.slug}?id=${movie.id}`}>read more</a>
 															</div>
@@ -243,7 +243,7 @@ import axios from 'axios'
 											</div>
 										</div>
 									</div>
-									<div className="col-md-3">
+									<div className="col-lg-3 col-md-12">
 										<div className="tranding-celebrities">
 											<h1 className="title">Popular Celebrity</h1>
 											<ul>

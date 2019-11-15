@@ -52,7 +52,7 @@ import axios from 'axios'
 										<p><i className="fa fa-heart-o"></i> Favorite</p>
 										<div className="rateing">
 											
-											<h4> <i className="fas fa-star"></i> {movie.rating} <span> /10</span></h4>
+											<h4> <i className="fa fa-star"></i> {movie.rating} <span> /10</span></h4>
 										</div>
 										{movie.genres && movie.genres.map((gen,i)=> (<div className="genres" key={i}><span  className={gen}>{gen}</span></div>))}
 									</div>
@@ -112,8 +112,21 @@ import axios from 'axios'
 										</div>
 									</div>
 								</div>
+								<div className="row">
+									<div className="col-md-12">
+										<div className="trailer">
+										<h2>trailer</h2>
+											<iframe 
+												src={`https://www.youtube.com/embed/${movie && movie.yt_trailer_code}`} 
+												frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+												allowFullScreen>
+											</iframe>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
+						
 					</div>
 				</div>
 			</React.Fragment>
@@ -121,3 +134,4 @@ import axios from 'axios'
 	}
 }
 export default Movie;
+// width="560" height="315
