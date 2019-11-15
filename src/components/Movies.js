@@ -234,7 +234,3 @@ import axios from 'axios'
 	}
 }
 export default Movies;
-// query_term
-// genre
-// minimum_rating
-// sort_by
