@@ -105,14 +105,14 @@ import axios from 'axios'
 							<div className="container">
 								<form onSubmit={this.onSubmit}>
 									<div className="row text-center">
-										<div className="col-md-4">
+										<div className="col-lg-4 col-md-12">
 											<div className="filter-item">
 												<label htmlFor="Search">Search</label>
 												<input type="text" name="searchQuery" onChange={this.changeHandler} placeholder="Search Keyword"/>
 											</div>
 											
 										</div>
-										<div className="col-md-2">
+										<div className="col-lg-2 col-md-4">
 											<div className="filter-item">
 												<label htmlFor="genres">genres</label>
 												<select name="genres" onChange={this.changeHandler}>
@@ -148,7 +148,7 @@ import axios from 'axios'
 
 											
 										</div>
-										<div className="col-md-2">
+										<div className="col-lg-2 col-md-4">
 											<div className="filter-item">
 												<label htmlFor="rating">Rating</label>
 												<select name="rating" onChange={this.changeHandler}>
@@ -166,7 +166,7 @@ import axios from 'axios'
 											</div>
 											
 										</div>
-										<div className="col-md-2">
+										<div className="col-lg-2 col-md-4">
 											<div className="filter-item">
 												<label htmlFor="sort_by">sort_by</label>
 												<select name="sortBy" onChange={this.changeHandler}>
@@ -183,7 +183,7 @@ import axios from 'axios'
 											</div>
 											
 										</div>
-										<div className="col-md-2">
+										<div className="col-lg-2 col-md-12">
 											<input type="submit" value="Submit"/>
 										</div>
 									</div>
@@ -201,7 +201,7 @@ import axios from 'axios'
 									
 									{
 										populardownload && populardownload.map((movie,i) => (
-											<div className="col-md-2" key={i}>
+											<div className="col-lg-2 col-md-3 col-sm-6" key={i}>
 												<div className="moive-item-wrapper">
 													<div className="tranding-list-item">
 														<img src={movie.large_cover_image} alt=""/>

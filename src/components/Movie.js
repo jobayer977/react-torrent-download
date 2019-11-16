@@ -52,7 +52,7 @@ import axios from 'axios'
 										<p><i className="fa fa-heart-o"></i> Favorite</p>
 										<div className="rateing">
 											
-											<h4> <i className="fa fa-star"></i> {movie.rating} <span> /10</span></h4>
+											<h4> <i className="fa fa-star"></i>{movie.rating} <span> /10</span></h4>
 										</div>
 										{movie.genres && movie.genres.map((gen,i)=> (<div className="genres" key={i}><span  className={gen}>{gen}</span></div>))}
 									</div>

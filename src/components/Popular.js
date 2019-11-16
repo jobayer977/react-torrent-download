@@ -66,7 +66,7 @@ import axios from 'axios'
 									
 									{
 										populardownload.map((movie,i) => (
-											<div className="col-md-2" key={i}>
+											<div className="col-lg-2 col-md-3 col-sm-6" key={i}>
 												<div className="moive-item-wrapper">
 													<div className="tranding-list-item">
 														<img src={movie.large_cover_image} alt=""/>

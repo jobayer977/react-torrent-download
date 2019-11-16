@@ -1232,6 +1232,10 @@ select:focus {
     .footer-item {
         margin-bottom: 30px;
     }
+    .tranding-list-item a {
+    left: 35% !important;
+}
+
 }
 
 /* Medium devices (tablets, less than 992px) */
@@ -1250,5 +1254,16 @@ select:focus {
         top: 15%;
         left: 15%;
         padding: 5px;
+    }
+
+    .filter-wrapper input[type="text"], .filter-wrapper input[type="submit"] {width: 100%;}
+
+    .filter-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+    }
+    .tranding-list-item a{
+        left: 25%;
     }
 }
