@@ -956,6 +956,7 @@ button.loadbtn:hover {
 .movie-list-wrapper {
     background-color: #020d18;
     padding-bottom: 75px;
+    padding-top: 25px;
 }
 
 .page-title {

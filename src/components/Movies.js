@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 
  class Movies extends Component {
@@ -209,7 +210,7 @@ import axios from 'axios'
 															{movie.genres.slice(0,2).map((gen,i)=> (<div className="genres" key={i}><span  className={gen}>{gen}</span></div>))}
 															<h4><i className="fa fa-star"></i>{movie.rating} <span> /10</span></h4>
 														</div>
-														<a href={`/movie/${movie.slug}?id=${movie.id}`}>View details</a>
+														<Link href={`/movie/${movie.slug}?id=${movie.id}`}>View details</Link>
 														
 													</div>
 													<div className="movie-info">

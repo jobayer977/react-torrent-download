@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
  class Layout extends Component {
  	constructor(props){
@@ -45,12 +46,14 @@ import axios from 'axios'
  				loading:false
  			}))
  	}
+ 	// Change Handler
  	onChangeHandler = (e) => {
  		this.setState({
  			searchQuery:e.target.value
  		})
  		 e.preventDefault();
  	}
+ 	// Search Form Submit
  	searchSubmit = (e) => {
  		axios.get(`https://yts.lt/api/v2/list_movies.json?query_term=${this.state.searchQuery}&limit=12`)
  			.then(response => this.setState({
@@ -61,6 +64,7 @@ import axios from 'axios'
  			}))
  		e.preventDefault();
  	}
+ 	// Search Item Pagination
  	nextSearchPage = (e) => {
  		axios.get(`https://yts.lt/api/v2/list_movies.json?query_term=${this.state.searchQuery}&limit=12&page=${this.state.searchPaginatio}`)
  			.then(response => this.setState({
@@ -129,31 +133,33 @@ import axios from 'axios'
 									<div className="col-md-6 col-sm-6 col-7 text-right">
 										<h4>Follow US:</h4>
 										<ul>
-											<li><a href="/"><i className="fa fa-facebook"></i></a></li>
-											<li><a href="/"><i className="fa fa-twitter"></i></a></li>
-											<li><a href="/"><i className="fa fa-instagram"></i></a></li>
+											<li><Link to="/"><i className="fa fa-facebook"></i></Link></li>
+											<li><Link to="/"><i className="fa fa-twitter"></i></Link></li>
+											<li><Link to="/"><i className="fa fa-instagram"></i></Link></li>
 										</ul>
 									</div>
 								</div>
 							</div>
 							<div className="row">
 								{
-									latestMovies && latestMovies.map((movie,i) => (
-										<div className="col-lg-3 col-md-6 col-sm-6 col-12" key={i}>
-											<div className="latest-item">
-												<div className="thumnail">
-													<img src={movie.large_cover_image} alt=""/>
+										latestMovies && latestMovies.map((movie,i) => (
+											<div className="col-lg-3 col-md-6 col-sm-6 col-12" key={i}>
+												<div className="latest-item">
+													<div className="thumnail">
+														<img src={movie.large_cover_image} alt=""/>
+													</div>
+													
+													<div className="sort-info">
+														{movie.genres.slice(0,3).map((gen,i)=> (<div className="genres" key={i}><span  className={gen}>{gen}</span></div>))}
+														<h2>{movie.title_english} <span>{movie.year}</span></h2>
+														<h4><i className="fa fa-star"></i> {movie.rating} <span>/10</span></h4>
+													</div>
+													
+													<Link to={`/movie/${movie.slug}?id=${movie.id}`}>View details</Link>
 												</div>
-												<div className="sort-info">
-													{movie.genres.slice(0,3).map((gen,i)=> (<div className="genres" key={i}><span  className={gen}>{gen}</span></div>))}
-													<h2>{movie.title_english} <span>{movie.year}</span></h2>
-													<h4><i className="fa fa-star"></i> {movie.rating} <span>/10</span></h4>
-												</div>
-												<a href={`/movie/${movie.slug}?id=${movie.id}`}>View details</a>
 											</div>
-										</div>
-										))
-								}
+											))
+									}
 
 							</div>
 							<div className="row ">
@@ -174,7 +180,7 @@ import axios from 'axios'
 													<h1 className="title">popular   download</h1>
 												</div>
 												<div className="col-md-6 col-sm-6 col-5">
-													<a href="/popular"><h2 className="view-more text-right">View All </h2></a>
+													<Link to="/popular"><h2 className="view-more text-right">View All </h2></Link>
 												</div>
 											</div>
 											<div className="row">
@@ -188,7 +194,7 @@ import axios from 'axios'
 																	<h2>{movie.title} <span>{movie.year}</span></h2>
 																	<h4><i className="fa fa-star"></i> {movie.rating} <span>/10</span></h4>
 																</div>
-																<a href={`/movie/${movie.slug}?id=${movie.id}`}>View details</a>
+																<Link to={`/movie/${movie.slug}?id=${movie.id}`}>View details</Link>
 															</div>
 														</div>
 														))
@@ -221,7 +227,7 @@ import axios from 'axios'
 													<h1 className="title">Top rated</h1>
 												</div>
 												<div className="col-md-6 col-sm-5 col-5">
-													<a href="/top"><h2 className="view-more text-right">View All </h2></a>
+													<Link to="/top"><h2 className="view-more text-right">View All </h2></Link>
 												</div>
 											</div>
 											<div className="row">		
@@ -235,7 +241,8 @@ import axios from 'axios'
 																	<h2>{movie.title}  <span>{movie.year}</span></h2>
 																	<h4><i className="fa fa-star"></i>{movie.rating} <span> /10</span></h4>
 																</div>
-																<a href={`/movie/${movie.slug}?id=${movie.id}`}>read more</a>
+															
+																<Link to={`/movie/${movie.slug}?id=${movie.id}`}>View details</Link>
 															</div>
 														</div>
 														))

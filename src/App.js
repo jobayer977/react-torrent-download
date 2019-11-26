@@ -8,6 +8,7 @@ import Movie from './components/Movie'
 import Popular from './components/Popular'
 import Top from './components/Top'
 import Movies from './components/Movies'
+import Test from './components/Test'
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 

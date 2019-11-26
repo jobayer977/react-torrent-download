@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 
  class Popular extends Component {
@@ -36,7 +37,6 @@ import axios from 'axios'
  	}
 	render() {
 		const{populardownload,paginatioPageItemShow,loading} = this.state
-		console.log(loading)
 		var loadMoreStatus = ''
 		if (paginatioPageItemShow < 30) {
 			loadMoreStatus = ''
@@ -74,7 +74,7 @@ import axios from 'axios'
 															{movie.genres.slice(0,2).map((gen,i)=> (<div className="genres" key={i}><span  className={gen}>{gen}</span></div>))}
 															<h4><i className="fa fa-star"></i>{movie.rating} <span> /10</span></h4>
 														</div>
-														<a href={`/movie/${movie.slug}?id=${movie.id}`}>read more</a>
+														<Link to={`/movie/${movie.slug}?id=${movie.id}`}>read more</Link>
 														
 													</div>
 													<div className="movie-info">
