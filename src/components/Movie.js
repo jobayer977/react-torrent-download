@@ -1,33 +1,33 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from "react"
+import axios from "axios"
 
 class Movie extends Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
 			movie: [],
-			loading: true
-		};
+			loading: true,
+		}
 	}
 	componentDidMount() {
-		let search = window.location.search;
-		let params = new URLSearchParams(search);
-		let GetID = params.get("id");
+		let search = window.location.search
+		let params = new URLSearchParams(search)
+		let GetID = params.get("id")
 		axios
 			.get(
-				`http://cors-anywhere.herokuapp.com/https://yts.lt/api/v2/movie_details.json?movie_id=${GetID}&with_images=true&with_cast=true`
+				` https://yts.lt/api/v2/movie_details.json?movie_id=${GetID}&with_images=true&with_cast=true`
 			)
 			.then((response) =>
 				this.setState({
 					movie: response.data.data.movie,
-					loading: false
+					loading: false,
 				})
-			);
+			)
 	}
 	render() {
-		const { movie, loading } = this.state;
-		console.log(movie);
-		var loadingStatus = "";
+		const { movie, loading } = this.state
+		console.log(movie)
+		var loadingStatus = ""
 		if (loading === true) {
 			loadingStatus = (
 				<div className="loading">
@@ -35,9 +35,9 @@ class Movie extends Component {
 						<i className="fa fa-spinner fa-pulse"></i>
 					</h1>
 				</div>
-			);
+			)
 		} else {
-			loadingStatus = "";
+			loadingStatus = ""
 		}
 		return (
 			<React.Fragment>
@@ -140,8 +140,9 @@ class Movie extends Component {
 										<div className="trailer">
 											<h2>trailer</h2>
 											<iframe
-												src={`https://www.youtube.com/embed/${movie &&
-													movie.yt_trailer_code}`}
+												src={`https://www.youtube.com/embed/${
+													movie && movie.yt_trailer_code
+												}`}
 												frameBorder="0"
 												allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 												allowFullScreen></iframe>
@@ -153,8 +154,8 @@ class Movie extends Component {
 					</div>
 				</div>
 			</React.Fragment>
-		);
+		)
 	}
 }
-export default Movie;
+export default Movie
 // width="560" height="315

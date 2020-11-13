@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import React, { Component } from "react"
+import { Link } from "react-router-dom"
+import axios from "axios"
 
 class Movies extends Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
 			populardownload: [],
 			paginatio: 2,
@@ -14,35 +14,35 @@ class Movies extends Component {
 			searchQuery: "",
 			genres: "Action",
 			rating: 4,
-			sortBy: "Year"
-		};
+			sortBy: "Year",
+		}
 	}
 	// JSON get
 	componentDidMount() {
 		axios
 			.get(
-				"http://cors-anywhere.herokuapp.com/https://yts.lt/api/v2/list_movies.json?sort_by=download_count&limit=30"
+				" https://yts.lt/api/v2/list_movies.json?sort_by=download_count&limit=30"
 			)
 			.then((response) =>
 				this.setState({
 					populardownload: response.data.data.movies,
 					paginatioPageItemShow: response.data.data.movie_count,
-					loading: false
+					loading: false,
 				})
-			);
+			)
 	}
 
 	// Filter Handler
 	changeHandler = (e) => {
 		this.setState({
-			[e.target.name]: e.target.value
-		});
-	};
+			[e.target.name]: e.target.value,
+		})
+	}
 
 	onSubmit = (e) => {
 		axios
 			.get(
-				`http://cors-anywhere.herokuapp.com/https://yts.lt/api/v2/list_movies.json?query_term=${this.state.searchQuery}&genre=${this.state.genres}&minimum_rating=${this.state.rating}&sort_by=${this.state.sortBy}&limit=30`
+				` https://yts.lt/api/v2/list_movies.json?query_term=${this.state.searchQuery}&genre=${this.state.genres}&minimum_rating=${this.state.rating}&sort_by=${this.state.sortBy}&limit=30`
 			)
 			.then((response) =>
 				this.setState({
@@ -50,52 +50,52 @@ class Movies extends Component {
 					paginatioPageItemShow: response.data.data.movie_count,
 					// loading:true,
 					fillterStatus: true,
-					loading: false
+					loading: false,
 				})
-			);
-		e.preventDefault();
-	};
+			)
+		e.preventDefault()
+	}
 
 	// Load More Button
 	nextPage = (e) => {
 		axios
 			.get(
-				`http://cors-anywhere.herokuapp.com/https://yts.lt/api/v2/list_movies.json?sort_by=download_count&limit=30&page=${this.state.paginatio}`
+				` https://yts.lt/api/v2/list_movies.json?sort_by=download_count&limit=30&page=${this.state.paginatio}`
 			)
 			.then((response) =>
 				this.setState({
 					populardownload: response.data.data.movies,
 					paginatio: this.state.paginatio + 1,
 					paginatioPageItemShow: this.state.paginatioPageItemShow - 30,
-					loading: false
+					loading: false,
 				})
-			);
+			)
 		window.scrollTo({
 			top: 150,
-			behavior: "smooth"
-		});
-		e.preventDefault();
-	};
+			behavior: "smooth",
+		})
+		e.preventDefault()
+	}
 
 	render() {
 		const {
 			populardownload,
 			paginatioPageItemShow,
 			loading,
-			fillterStatus
-		} = this.state;
+			fillterStatus,
+		} = this.state
 		// console.log(this.state)
-		var loadMoreStatus = "";
+		var loadMoreStatus = ""
 		if (paginatioPageItemShow < 30) {
-			loadMoreStatus = "";
+			loadMoreStatus = ""
 		} else {
 			loadMoreStatus = (
 				<button className="loadbtn" onClick={this.nextPage}>
 					More {paginatioPageItemShow}{" "}
 				</button>
-			);
+			)
 		}
-		var loadingStatus = "";
+		var loadingStatus = ""
 		if (loading === true) {
 			loadingStatus = (
 				<div className="loading">
@@ -103,11 +103,11 @@ class Movies extends Component {
 						<i className="fa fa-spinner fa-pulse"></i>
 					</h1>
 				</div>
-			);
+			)
 		} else {
-			loadingStatus = "";
+			loadingStatus = ""
 		}
-		var filterMarkup = "";
+		var filterMarkup = ""
 		if (fillterStatus === true) {
 			filterMarkup = (
 				<div className="filter-movies-status">
@@ -115,9 +115,9 @@ class Movies extends Component {
 						Found <span>{paginatioPageItemShow}</span> movies in total
 					</p>
 				</div>
-			);
+			)
 		} else {
-			filterMarkup = "";
+			filterMarkup = ""
 		}
 		return (
 			<React.Fragment>
@@ -266,7 +266,7 @@ class Movies extends Component {
 					</div>
 				</section>
 			</React.Fragment>
-		);
+		)
 	}
 }
-export default Movies;
+export default Movies

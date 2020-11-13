@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import React, { Component } from "react"
+import axios from "axios"
+import { Link } from "react-router-dom"
 
 class Layout extends Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
 			latestMovies: [],
 			populardownload: [],
@@ -16,30 +16,28 @@ class Layout extends Component {
 			searching: false,
 			searchPaginatio: 2,
 			searchPageItemShow: 0,
-			loading: true
-		};
+			loading: true,
+		}
 	}
 	componentDidMount() {
 		axios
-			.get(
-				"http://cors-anywhere.herokuapp.com/yts.lt/api/v2/list_movies.json?&limit=4&sort_by=year"
-			)
+			.get("https://yts.lt/api/v2/list_movies.json?&limit=4&sort_by=year")
 			.then((response) =>
 				this.setState({
 					latestMovies: response.data.data.movies,
-					loading: false
+					loading: false,
 				})
-			);
+			)
 		axios
 			.get(
-				"http://cors-anywhere.herokuapp.com/yts.lt/api/v2/list_movies.json?sort_by=download_count&limit=8"
+				"https://yts.lt/api/v2/list_movies.json?sort_by=download_count&limit=8"
 			)
 			.then((response) =>
 				this.setState({
 					populardownload: response.data.data.movies,
-					loading: false
+					loading: false,
 				})
-			);
+			)
 		axios
 			.get(
 				"https://api.themoviedb.org/3/movie/upcoming?api_key=25d2bef9b77c25cd95e1a4d011f98dd9&language=en-US&page=1"
@@ -47,9 +45,9 @@ class Layout extends Component {
 			.then((response) =>
 				this.setState({
 					upComingMovie: response.data.results,
-					loading: false
+					loading: false,
 				})
-			);
+			)
 		axios
 			.get(
 				"https://api.themoviedb.org/3/person/popular?api_key=25d2bef9b77c25cd95e1a4d011f98dd9&language=en-US&page=1"
@@ -57,48 +55,46 @@ class Layout extends Component {
 			.then((response) =>
 				this.setState({
 					popularCelebrity: response.data.results,
-					loading: false
+					loading: false,
 				})
-			);
-		axios
-			.get(
-				"http://cors-anywhere.herokuapp.com/yts.lt/api/v2/list_movies.json?sort_by=rating&limit=8"
 			)
+		axios
+			.get("https://yts.lt/api/v2/list_movies.json?sort_by=rating&limit=8")
 			.then((response) =>
 				this.setState({
 					topRatedMovie: response.data.data.movies,
-					loading: false
+					loading: false,
 				})
-			);
+			)
 	}
 	// Change Handler
 	onChangeHandler = (e) => {
 		this.setState({
-			searchQuery: e.target.value
-		});
-		e.preventDefault();
-	};
+			searchQuery: e.target.value,
+		})
+		e.preventDefault()
+	}
 	// Search Form Submit
 	searchSubmit = (e) => {
 		axios
 			.get(
-				`http://cors-anywhere.herokuapp.com/https://yts.lt/api/v2/list_movies.json?query_term=${this.state.searchQuery}&limit=12`
+				` https://yts.lt/api/v2/list_movies.json?query_term=${this.state.searchQuery}&limit=12`
 			)
 			.then((response) =>
 				this.setState({
 					latestMovies: response.data.data.movies,
 					searchInfo: response.data.data,
 					searchPageItemShow: response.data.data.movie_count,
-					searching: true
+					searching: true,
 				})
-			);
-		e.preventDefault();
-	};
+			)
+		e.preventDefault()
+	}
 	// Search Item Pagination
 	nextSearchPage = (e) => {
 		axios
 			.get(
-				`http://cors-anywhere.herokuapp.com/https://yts.lt/api/v2/list_movies.json?query_term=${this.state.searchQuery}&limit=12&page=${this.state.searchPaginatio}`
+				` https://yts.lt/api/v2/list_movies.json?query_term=${this.state.searchQuery}&limit=12&page=${this.state.searchPaginatio}`
 			)
 			.then((response) =>
 				this.setState({
@@ -106,15 +102,15 @@ class Layout extends Component {
 					searchInfo: response.data.data,
 					searching: true,
 					searchPaginatio: this.state.searchPaginatio + 1,
-					searchPageItemShow: this.state.searchPageItemShow - 12
+					searchPageItemShow: this.state.searchPageItemShow - 12,
 				})
-			);
+			)
 		window.scrollTo({
 			top: 150,
-			behavior: "smooth"
-		});
-		e.preventDefault();
-	};
+			behavior: "smooth",
+		})
+		e.preventDefault()
+	}
 
 	render() {
 		const {
@@ -126,36 +122,36 @@ class Layout extends Component {
 			searchQuery,
 			searching,
 			searchPageItemShow,
-			loading
-		} = this.state;
+			loading,
+		} = this.state
 
-		var headingStatus = "";
-		var searchPageStatus = "";
+		var headingStatus = ""
+		var searchPageStatus = ""
 		if (searching === false) {
-			headingStatus = "Latest movies";
-			searchPageStatus = "";
+			headingStatus = "Latest movies"
+			searchPageStatus = ""
 		} else {
 			headingStatus = (
 				<div className="searchInfo">
 					You Searching {searchQuery} found{" "}
 					{searchPageItemShow && searchPageItemShow} Movie
 				</div>
-			);
+			)
 			if (searchPageItemShow > 12) {
 				searchPageStatus = (
 					<button className="loadbtn" onClick={this.nextSearchPage}>
 						More {searchPageItemShow}
 					</button>
-				);
+				)
 			} else {
 				searchPageStatus = (
 					<a href="/">
 						<button className="loadbtn">Back to Home</button>
 					</a>
-				);
+				)
 			}
 		}
-		var loadingStatus = "";
+		var loadingStatus = ""
 		if (loading === true) {
 			loadingStatus = (
 				<div className="loading">
@@ -163,9 +159,9 @@ class Layout extends Component {
 						<i className="fa fa-spinner fa-pulse"></i>
 					</h1>
 				</div>
-			);
+			)
 		} else {
-			loadingStatus = "";
+			loadingStatus = ""
 		}
 		return (
 			<React.Fragment>
@@ -384,10 +380,10 @@ class Layout extends Component {
 					</div>
 				</section>
 			</React.Fragment>
-		);
+		)
 	}
 }
-export default Layout;
+export default Layout
 
 // <section className="in-theater-movies-list">
 // 				<div className="container">

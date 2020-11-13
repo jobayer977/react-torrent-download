@@ -1,62 +1,60 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import React, { Component } from "react"
+import { Link } from "react-router-dom"
+import axios from "axios"
 
 class Top extends Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
 			topRatedMovie: [],
 			paginatio: 2,
 			paginatioPageItemShow: 0,
-			loading: true
-		};
+			loading: true,
+		}
 	}
 	componentDidMount() {
 		axios
-			.get(
-				"http://cors-anywhere.herokuapp.com/https://yts.lt/api/v2/list_movies.json?sort_by=rating&limit=30"
-			)
+			.get(" https://yts.lt/api/v2/list_movies.json?sort_by=rating&limit=30")
 			.then((response) =>
 				this.setState({
 					topRatedMovie: response.data.data.movies,
 					paginatioPageItemShow: response.data.data.movie_count,
-					loading: false
+					loading: false,
 				})
-			);
+			)
 	}
 	nextPage = (e) => {
 		axios
 			.get(
-				`http://cors-anywhere.herokuapp.com/https://yts.lt/api/v2/list_movies.json?sort_by=rating&limit=30&page=${this.state.paginatio}`
+				` https://yts.lt/api/v2/list_movies.json?sort_by=rating&limit=30&page=${this.state.paginatio}`
 			)
 			.then((response) =>
 				this.setState({
 					topRatedMovie: response.data.data.movies,
 					paginatio: this.state.paginatio + 1,
 					paginatioPageItemShow: this.state.paginatioPageItemShow - 30,
-					loading: false
+					loading: false,
 				})
-			);
+			)
 		window.scrollTo({
 			top: 150,
-			behavior: "smooth"
-		});
-		e.preventDefault();
-	};
+			behavior: "smooth",
+		})
+		e.preventDefault()
+	}
 	render() {
-		const { topRatedMovie, paginatioPageItemShow, loading } = this.state;
-		var loadMoreStatus = "";
+		const { topRatedMovie, paginatioPageItemShow, loading } = this.state
+		var loadMoreStatus = ""
 		if (paginatioPageItemShow < 30) {
-			loadMoreStatus = "";
+			loadMoreStatus = ""
 		} else {
 			loadMoreStatus = (
 				<button className="loadbtn" onClick={this.nextPage}>
 					More {paginatioPageItemShow}{" "}
 				</button>
-			);
+			)
 		}
-		var loadingStatus = "";
+		var loadingStatus = ""
 		if (loading === true) {
 			loadingStatus = (
 				<div className="loading">
@@ -64,9 +62,9 @@ class Top extends Component {
 						<i className="fa fa-spinner fa-pulse"></i>
 					</h1>
 				</div>
-			);
+			)
 		} else {
-			loadingStatus = "";
+			loadingStatus = ""
 		}
 		return (
 			<React.Fragment>
@@ -121,7 +119,7 @@ class Top extends Component {
 					</div>
 				</section>
 			</React.Fragment>
-		);
+		)
 	}
 }
-export default Top;
+export default Top
